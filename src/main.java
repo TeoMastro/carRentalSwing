@@ -44,12 +44,16 @@ public class main extends javax.swing.JFrame {
         return null;
     }
     public void post() throws Exception{
-        String model=textModel.getText();
-        String color=textColor.getText();
+        String model=textModel.getText().toString();
+        String color=textColor.getText().toString(); 
+        String model1="kurwa";
+        String color1="teo";
         try{
             getConnection();
             PreparedStatement posted = conn.prepareStatement("INSERT INTO car (model,color) VALUES ('"+model+"', '"+color+"')");
+            PreparedStatement posted1 = conn.prepareStatement("INSERT INTO car (model,color) VALUES ('"+model1+"', '"+color1+"')");
             posted.executeUpdate();
+            posted1.executeUpdate();
         } catch(Exception e){System.out.println(e);}
         finally {
             System.out.println("Insert Completed.");
@@ -97,15 +101,32 @@ public class main extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         addCar.setText("add car");
+        addCar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addCarMouseClicked(evt);
+            }
+        });
         addCar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addCarActionPerformed(evt);
             }
         });
 
-        textModel.setToolTipText("");
+        textModel.setToolTipText("kurwa");
+        textModel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textModelActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Model");
+
+        textColor.setToolTipText("fdasfsd");
+        textColor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textColorActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Color");
 
@@ -184,6 +205,18 @@ public class main extends javax.swing.JFrame {
             System.out.println(e);
         }
     }//GEN-LAST:event_showCarsActionPerformed
+
+    private void textModelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textModelActionPerformed
+        //
+    }//GEN-LAST:event_textModelActionPerformed
+
+    private void textColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textColorActionPerformed
+        //
+    }//GEN-LAST:event_textColorActionPerformed
+
+    private void addCarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addCarMouseClicked
+        //
+    }//GEN-LAST:event_addCarMouseClicked
 
     /**
      * @param args the command line arguments
